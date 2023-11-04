@@ -1,36 +1,32 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
-import com.example.demo.dto.CustomDto;
-import com.example.demo.dto.CustomDtoList;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.stereotype.Component;
 
-@Entity
-public class Carro {
+@Component
+public class CarroDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
 
-    @Column(name = "timestamp_cadastro")
+
     private Integer timeStampCadastro;
 
-    @ManyToOne
-    @JoinColumn(name = "modelo_id")
-    private Modelo modelo;
+    @JsonProperty("modelo_id")
+    private Long modelo;
 
     private Integer ano;
 
     private String combustivel;
 
-    @Column(name = "num_portas")
     private Integer numeroPortas;
 
     private String cor;
 
-    public Carro() {
+    public CarroDto() {
     }
 
-    public Carro(Long id, Integer timeStampCadastro, Modelo modelo, Integer ano, String combustivel, Integer numeroPortas, String cor) {
+    public CarroDto(Long id, Integer timeStampCadastro, Long modelo, Integer ano, String combustivel, Integer numeroPortas, String cor) {
         this.id = id;
         this.timeStampCadastro = timeStampCadastro;
         this.modelo = modelo;
@@ -56,11 +52,11 @@ public class Carro {
         this.timeStampCadastro = timeStampCadastro;
     }
 
-    public Modelo getModelo() {
+    public Long getModelo() {
         return modelo;
     }
 
-    public void setModelo(Modelo modelo) {
+    public void setModelo(Long modelo) {
         this.modelo = modelo;
     }
 
@@ -94,9 +90,5 @@ public class Carro {
 
     public void setCor(String cor) {
         this.cor = cor;
-    }
-
-    public CustomDto toCustomDto() {
-        return new CustomDto(this.id, this.timeStampCadastro, this.modelo.getId(), this.ano, this.combustivel, this.numeroPortas, this.cor, this.modelo.getNome(), this.modelo.getValorFipe());
     }
 }

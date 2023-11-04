@@ -1,2 +1,4 @@
-package com.example.demo.mapper;public class MarcaMapper {
+package com.example.demo.mapper;
+
+public class MarcaMapper {
 }

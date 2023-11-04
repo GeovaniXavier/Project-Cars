@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface CarroRepository extends JpaRepository<Carro, Long> {
 
-    @Query("SELECT c.id, c.timeStampCadastro, m.id, c.ano, c.combustivel, c.numeroPortas, c.cor, m.nome, m.valorFipe FROM Carro c INNER JOIN c.modelo m")
-    List<Object[]> findCarrosWithModeloDetails();
+//    @Query("SELECT c.id, c.timeStampCadastro, m.id, c.ano, c.combustivel, c.numeroPortas, c.cor, m.nome, m.valorFipe FROM Carro c INNER JOIN c.modelo m")
+//    List<Carro> findCarrosWithModeloDetails();
 
 }

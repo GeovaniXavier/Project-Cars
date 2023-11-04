@@ -1,43 +1,47 @@
-package com.example.demo.entity;
+package com.example.demo.dto;
 
-import com.example.demo.dto.CustomDto;
-import com.example.demo.dto.CustomDtoList;
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity
-public class Carro {
+import java.math.BigDecimal;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class CustomDto {
+
+
     private Long id;
 
-    @Column(name = "timestamp_cadastro")
     private Integer timeStampCadastro;
 
-    @ManyToOne
-    @JoinColumn(name = "modelo_id")
-    private Modelo modelo;
+    @JsonProperty("modelo_id")
+    private Long modeloId;
 
     private Integer ano;
 
     private String combustivel;
 
-    @Column(name = "num_portas")
     private Integer numeroPortas;
 
     private String cor;
 
-    public Carro() {
-    }
+    @JsonProperty("nome_modelo")
+    private String nomeModelo;
 
-    public Carro(Long id, Integer timeStampCadastro, Modelo modelo, Integer ano, String combustivel, Integer numeroPortas, String cor) {
+    @JsonProperty("valor")
+    private BigDecimal valorFipe;
+
+
+    public CustomDto(Long id, Integer timeStampCadastro, Long modeloId, Integer ano, String combustivel, Integer numeroPortas, String cor, String nomeModelo, BigDecimal valorFipe) {
         this.id = id;
         this.timeStampCadastro = timeStampCadastro;
-        this.modelo = modelo;
+        this.modeloId = modeloId;
         this.ano = ano;
         this.combustivel = combustivel;
         this.numeroPortas = numeroPortas;
         this.cor = cor;
+        this.nomeModelo = nomeModelo;
+        this.valorFipe = valorFipe;
+    }
+
+    public CustomDto() {
     }
 
     public Long getId() {
@@ -56,12 +60,12 @@ public class Carro {
         this.timeStampCadastro = timeStampCadastro;
     }
 
-    public Modelo getModelo() {
-        return modelo;
+    public Long getModeloId() {
+        return modeloId;
     }
 
-    public void setModelo(Modelo modelo) {
-        this.modelo = modelo;
+    public void setModeloId(Long modeloId) {
+        this.modeloId = modeloId;
     }
 
     public Integer getAno() {
@@ -96,7 +100,19 @@ public class Carro {
         this.cor = cor;
     }
 
-    public CustomDto toCustomDto() {
-        return new CustomDto(this.id, this.timeStampCadastro, this.modelo.getId(), this.ano, this.combustivel, this.numeroPortas, this.cor, this.modelo.getNome(), this.modelo.getValorFipe());
+    public String getNomeModelo() {
+        return nomeModelo;
+    }
+
+    public void setNomeModelo(String nomeModelo) {
+        this.nomeModelo = nomeModelo;
+    }
+
+    public BigDecimal getValorFipe() {
+        return valorFipe;
+    }
+
+    public void setValorFipe(BigDecimal valorFipe) {
+        this.valorFipe = valorFipe;
     }
 }
