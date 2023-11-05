@@ -20,8 +20,12 @@ public class CarroController {
     private CarroService carroService;
 
     @GetMapping
-    public ResponseEntity<List<Carro>> findAll() {
-        return ResponseEntity.ok().body(carroService.findAll());
+    public ResponseEntity<List<CarroDto>> findAll() {
+
+        List<Carro> carroList = carroService.findAll();
+        List<CarroDto> carroDtoList = CarroMapper.converteListCarroEmListCarroDto(carroList);
+        return ResponseEntity.ok().body(carroDtoList);
+
     }
 
     @PostMapping
@@ -34,12 +38,15 @@ public class CarroController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Carro carro) {
-        return ResponseEntity.ok().body(carroService.update(id, carro));
+    public ResponseEntity<CarroDto> update(@PathVariable Long id, @RequestBody CarroDto carroDto) {
+        Carro carro = CarroMapper.converteCarroDtoEmCarro(carroDto);
+        Carro updatedCarro = carroService.update(id, carro);
+        CarroDto updatedCarroDto = CarroMapper.converteCarroEmCarroDto(updatedCarro);
+        return ResponseEntity.ok().body(updatedCarroDto);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable Long id) {
+    public ResponseEntity<CarroDto> deleteById(@PathVariable Long id) {
         carroService.deleteById(id);
         return ResponseEntity.noContent().build();
     }

@@ -13,7 +13,7 @@ public class CarroDto {
     private Integer timeStampCadastro;
 
     @JsonProperty("modelo_id")
-    private Long modelo;
+    private Long modeloId;
 
     private Integer ano;
 
@@ -26,15 +26,16 @@ public class CarroDto {
     public CarroDto() {
     }
 
-    public CarroDto(Long id, Integer timeStampCadastro, Long modelo, Integer ano, String combustivel, Integer numeroPortas, String cor) {
+    public CarroDto(Long id, Integer timeStampCadastro, Long modeloId, Integer ano, String combustivel, Integer numeroPortas, String cor) {
         this.id = id;
         this.timeStampCadastro = timeStampCadastro;
-        this.modelo = modelo;
+        this.modeloId = modeloId;
         this.ano = ano;
         this.combustivel = combustivel;
         this.numeroPortas = numeroPortas;
         this.cor = cor;
     }
+
 
     public Long getId() {
         return id;
@@ -52,12 +53,12 @@ public class CarroDto {
         this.timeStampCadastro = timeStampCadastro;
     }
 
-    public Long getModelo() {
-        return modelo;
+    public Long getModeloId() {
+        return modeloId;
     }
 
-    public void setModelo(Long modelo) {
-        this.modelo = modelo;
+    public void setModeloId(Long modeloId) {
+        this.modeloId = modeloId;
     }
 
     public Integer getAno() {

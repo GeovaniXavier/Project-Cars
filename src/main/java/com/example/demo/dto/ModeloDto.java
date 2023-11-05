@@ -8,7 +8,8 @@ public class ModeloDto {
 
     private Long id;
 
-    private Long marca;
+    @JsonProperty("marca_id")
+    private Long marcaId;
 
     @JsonProperty("nome_modelo")
     private String nome;
@@ -19,9 +20,9 @@ public class ModeloDto {
     public ModeloDto() {
     }
 
-    public ModeloDto(Long id, Long marca, String nome, BigDecimal valorFipe) {
+    public ModeloDto(Long id, Long marcaId, String nome, BigDecimal valorFipe) {
         this.id = id;
-        this.marca = marca;
+        this.marcaId = marcaId;
         this.nome = nome;
         this.valorFipe = valorFipe;
     }
@@ -34,12 +35,12 @@ public class ModeloDto {
         this.id = id;
     }
 
-    public Long getMarca() {
-        return marca;
+    public Long getMarcaId() {
+        return marcaId;
     }
 
-    public void setMarca(Long marca) {
-        this.marca = marca;
+    public void setMarcaId(Long marcaId) {
+        this.marcaId = marcaId;
     }
 
     public String getNome() {
