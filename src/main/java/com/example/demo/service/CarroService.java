@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.CustomDto;
+import com.example.demo.dto.CustomDtoList;
 import com.example.demo.entity.Carro;
 import com.example.demo.repository.CarroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +37,8 @@ public class CarroService {
         carroRepository.deleteById(id);
     }
 
-    public List<CustomDto> findCarroWithModelo() {
-        return carroRepository.findAll().stream().map(Carro::toCustomDto).toList();
+    public List<CustomDtoList> findCarroWithModelo() {
+        return carroRepository.findAll().stream().map(Carro::toCustomDtoList).toList();
     }
 
 }

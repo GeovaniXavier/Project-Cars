@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.dto.CarroDto;
-import com.example.demo.dto.CustomDto;
+import com.example.demo.dto.CustomDtoList;
 import com.example.demo.entity.Carro;
 import com.example.demo.mapper.CarroMapper;
 import com.example.demo.service.CarroService;
@@ -21,7 +21,6 @@ public class CarroController {
 
     @GetMapping
     public ResponseEntity<List<CarroDto>> findAll() {
-
         List<Carro> carroList = carroService.findAll();
         List<CarroDto> carroDtoList = CarroMapper.converteListCarroEmListCarroDto(carroList);
         return ResponseEntity.ok().body(carroDtoList);
@@ -52,7 +51,7 @@ public class CarroController {
     }
 
     @GetMapping("/withModelo")
-    public ResponseEntity<List<CustomDto>> findCarroWithModelo() {
+    public ResponseEntity<List<CustomDtoList>> findCarroWithModelo() {
         return ResponseEntity.ok().body(carroService.findCarroWithModelo());
     }
 }

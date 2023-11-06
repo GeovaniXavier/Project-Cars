@@ -96,7 +96,7 @@ public class Carro {
         this.cor = cor;
     }
 
-    public CustomDto toCustomDto() {
-        return new CustomDto(this.id, this.timeStampCadastro, this.modelo.getId(), this.ano, this.combustivel, this.numeroPortas, this.cor, this.modelo.getNome(), this.modelo.getValorFipe());
+    public CustomDtoList toCustomDtoList() {
+        return new CustomDtoList(new CustomDto(this.id, this.timeStampCadastro, this.modelo.getId(), this.ano, this.combustivel, this.numeroPortas, this.cor, this.modelo.getNome(), this.modelo.getValorFipe()));
     }
 }
